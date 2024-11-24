@@ -1,8 +1,5 @@
 import { PokemonGrid, PokemonsReponse, SimplePokemon } from "@/pokemons";
 
-
-
-
 export const metadata = {
   title: 'Pokemons Generated',
   description: 'Project with Next.js',
@@ -23,8 +20,6 @@ const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => 
 }
 
 
-
-
 export default async function PokemonsPage() {
 
   const pokemons = await getPokemons(151);
@@ -32,7 +27,7 @@ export default async function PokemonsPage() {
   return (
     <div className="flex flex-col">
 
-      <span className="text-5xl my-2">List of Pokemons <small>static</small></span>
+      <span className="text-5xl my-2">List of Pokemons <small className="text-blue-500">static</small></span>
 
       <PokemonGrid pokemons={pokemons} />
 
