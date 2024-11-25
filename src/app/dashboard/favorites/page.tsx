@@ -1,5 +1,6 @@
 import { FavoritePokemons, PokemonGrid, PokemonsReponse, SimplePokemon } from "@/pokemons";
 
+
 export const metadata = {
     title: 'Favorites',
     description: 'Project with Next.js',
@@ -20,3 +21,4 @@ export default async function PokemonsPage() {
         </div>
     );
 }
+
