@@ -3,11 +3,16 @@ import { SimplePokemon } from '@/pokemons';
 
 interface PokemonState {
     [key: string]: SimplePokemon,
-
 }
 
+const getInitialState = (): PokemonState => {
+    const favorites = JSON.parse(localStorage.getItem('favorite-pokemons') ?? '{}');
+
+    return favorites
+}
 
 const initialState: PokemonState = {
+    ...getInitialState(),
     // '1': { id: '1', name: 'bulbasaur' },
     // '2': { id: '2', name: 'ivysaur' },
     // '3': { id: '3', name: 'venusaur' },
@@ -23,9 +28,12 @@ const pokemonsSlice = createSlice({
 
             if (!!state[id]) {
                 delete state[id];
-                return;
+                // return;
+            } else {
+                state[id] = pokemon;
             }
-            state[id] = pokemon;
+            //TODO: No se debe de hacer asi
+            localStorage.setItem('favorite-pokemons', JSON.stringify(state));
         }
     }
 });
